@@ -1,7 +1,6 @@
-import nextcord
+from typing import Optional
 from nextcord.ext import commands
 from nextcord import Embed
-from typing import Optional
 
 class MyHelpCommand(commands.MinimalHelpCommand):
     def get_command_signature(self, command):
@@ -18,7 +17,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
         
         if command_set:
             #Muestra ayuda de todos los comandos en el set
-            filtered = await self.filter_commands(command_set, sort=True)
+            filtered = await self.filter_command(command_set, sort=True)
             for command in filtered: embed.add_field(
                 name=self.get_command_signature(command), 
                 value = command.short_doc or ". . .", 
