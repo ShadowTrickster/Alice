@@ -46,7 +46,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
 
     async def send_bot_help(self, mapping: dict):                         #esto creara un mapping. dict tiene los cog y su respectiva comandos
         embed = await self._help_embed(
-            title = "Comandos",
+            title = "Commands",
             description=self.context.bot.description,
             mapping=mapping
         )

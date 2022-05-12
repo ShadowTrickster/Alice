@@ -6,36 +6,35 @@ from config import GUILD_ID
 from .role_view import RoleView   
 
 class Administracion(commands.Cog, name="Administracion"):
-    """Commandos de administracion y moderacion"""
+    """Administration and moderation commands"""
 
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
-        """permite activar el mensaje que otorga o revoca el rol asignado"""
+        """Activate the rol message"""
         self.bot.add_view(RoleView())
 
     @commands.command()
-    #@commands.is_owner()                                        #permite que solo el owner lo ejecute
-    @commands.has_permissions(administrator=True)                #Permite que solo los admin lo ejecuten
+    @commands.is_owner()                                        #permite que solo el owner lo ejecute               #Permite que solo los admin lo ejecuten
     async def roles(self, ctx: commands.Context):
-        """Permite activar el mensaje que otorga o revoca el/los rol(es) asignado(s)"""
-        await ctx.send("Presione el botton para volverse un Aspecto y comenzar su aventura!.", view=RoleView())
+        """Lets you activate the Rol bottom"""
+        await ctx.send("Press here to become an Aspect and begin your adventure!", view=RoleView())
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx: commands.context, user: nextcord.Member):
-        """Permite expulsar miembros del servidor"""
+        """Kicks a member from the server"""
         try:
             if user == None:
-                await ctx.send("Porfavor introduzca usuario")
+                await ctx.send("Please mention a user")
                 return
 
             await user.kick()
-            await ctx.send(f" {user.name} a sido expulsado ")
+            await ctx.send(f" {user.name} has been kicked :( ")
         except Exception:
-            await ctx.send("Porfavor mencione un usuario valido")
+            await ctx.send("Please mention a valid user")
 
 #setup
 def setup(bot):

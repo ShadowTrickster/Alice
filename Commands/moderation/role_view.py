@@ -14,23 +14,18 @@ class RoleView(nextcord.ui.View):
         # get role from the role id
         role = interaction.guild.get_role(int(button.custom_id.split(":")[-1]))
         assert isinstance(role, nextcord.Role)
-        # if member has the role, remove it
         if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            # send confirmation message
-            await interaction.response.send_message(
-                f"Has dejado de ser un {button.label} :(", ephemeral=True                 #Ephemeral = Solo el usuario puede verlo
-            )
+            pass
         # if the member does not have the role, add it
         else:
             await interaction.user.add_roles(role)
             # send confirmation message
             await interaction.response.send_message(
-                f"TE HAS VUELTO UN {button.label}, FELICITACIONES!", ephemeral=True
+                f"You have become an {button.label}, congratulations!", ephemeral=True
             )
 
     @nextcord.ui.button(
-        label="Aspecto", 
+        label="Aspect", 
         emoji="💖", 
         style=nextcord.ButtonStyle.primary, 
         custom_id=custom_id(VIEW_NAME, config.ASPECTO_ID),

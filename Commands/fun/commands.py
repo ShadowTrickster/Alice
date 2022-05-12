@@ -2,15 +2,15 @@ from nextcord.ext import commands
 import random
 
 class Fun(commands.Cog, name="Fun"):
-    """Comandos de juegos o cosas divertidas"""
+    """Fun Commands"""
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
     @commands.command("roll")
     async def roll(self, ctx: commands.Context, dice: str):
-        """Rolea un dado en formato _d_
+        """Roll a dice in _d_ format
         
-        Ejemplo:
+        Example:
         ;roll 8d7"""
 
         try:
@@ -29,9 +29,9 @@ class Fun(commands.Cog, name="Fun"):
 
     @commands.command("choose")
     async def choose(self, ctx: commands.Context, *args):
-        """Elige entre las diferentes opciones aportadas
+        """Choose between multiple options given
 
-        Ejemplo:
+        Example:
         ;choose A B C D E"""
         try:
             choice = random.choice(args)

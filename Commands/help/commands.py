@@ -3,7 +3,7 @@ from .help import MyHelpCommand
 
 
 class HelpCog(commands.Cog, name="Help"):
-    """Muestra informacion de los comandos"""
+    """Provides information on existing commands"""
 
     def __init__(self, bot):
         self._original_help_command = bot.help_command
