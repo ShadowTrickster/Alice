@@ -43,7 +43,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
                 embed.add_field(name=name, value=value)
         return embed
 
-
+ 
     async def send_bot_help(self, mapping: dict):                         #esto creara un mapping. dict tiene los cog y su respectiva comandos
         embed = await self._help_embed(
             title = "Commands",
@@ -69,3 +69,4 @@ class MyHelpCommand(commands.MinimalHelpCommand):
         await self.get_destination().send(embed=embed)
 
     send_group_help = send_command_help
+

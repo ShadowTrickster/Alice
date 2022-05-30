@@ -21,7 +21,7 @@ class RoleView(nextcord.ui.View):
             await interaction.user.add_roles(role)
             # send confirmation message
             await interaction.response.send_message(
-                f"You have become an {button.label}, congratulations!", ephemeral=True
+                f"You have obtained the {button.label} role, congratulations!", ephemeral=True
             )
 
     @nextcord.ui.button(
@@ -31,4 +31,13 @@ class RoleView(nextcord.ui.View):
         custom_id=custom_id(VIEW_NAME, config.ASPECTO_ID),
         )
     async def aspecto_button(self, button, interaction):
+        await self.handle_click(button, interaction)
+
+    @nextcord.ui.button(
+        label = "English",
+        emoji="🥔",
+        style=nextcord.ButtonStyle.primary,
+        custom_id=custom_id(VIEW_NAME, config.ENGLISH_ID),
+    )
+    async def english_button(self, button, interaction):
         await self.handle_click(button, interaction)
