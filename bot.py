@@ -16,14 +16,15 @@ logger.addHandler(handler)
 
 def main():
     intents = nextcord.Intents.default()
-    client = commands.Bot(command_prefix=config.PREFIX, intents=intents)
-    servers = len(client.guilds)
+    client = commands.Bot(command_prefix=config.PREFIX, 
+    intents = intents, 
+    activity = nextcord.Activity
+    (type = nextcord.ActivityType.watching, 
+    name = f"Millions of worlds!"),
+    status = nextcord.Status.idle)
 
     @client.event
     async def on_ready():
-        await client.change_presence(activity = nextcord.Activity
-        (Type = nextcord.ActivityType.watching, 
-        name = f"{servers} worlds!"))
         print(f"{client.user.name} a despertado apropiadamente")
        
 
