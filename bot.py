@@ -1,4 +1,5 @@
 import os
+import discord
 from nextcord import Activity, Guild
 import nextcord
 from nextcord.ext import commands
@@ -15,16 +16,15 @@ logger.addHandler(handler)
 
 def main():
     intents = nextcord.Intents.default()
-
-    activity = nextcord.Activity(Type = nextcord.ActivityType.watching, name = f"{len(client.guilds)} worlds!")
-
-    client = commands.Bot(command_prefix=config.PREFIX, intents=intents, activity=activity, status=nextcord.Status.idle)
-
-    
+    client = commands.Bot(command_prefix=config.PREFIX, intents=intents, status=nextcord.Status.idle)
+    servers = len(client.guilds)
 
     @client.event
     async def on_ready():
         print(f"{client.user.name} a despertado apropiadamente")
+        await client.change_presence(activity = nextcord.Activity
+        (Type = nextcord.ActivityType.watching, 
+        name = f"{servers} worlds!"))
 
     for folder in os.listdir("Commands"):
         if os.path.exists(os.path.join("Commands", folder, "commands.py")):
