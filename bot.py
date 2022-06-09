@@ -1,4 +1,5 @@
 import os
+from nextcord import Activity, Guild
 import nextcord
 from nextcord.ext import commands
 from nextcord.utils import get
@@ -15,7 +16,11 @@ logger.addHandler(handler)
 def main():
     intents = nextcord.Intents.default()
 
-    client = commands.Bot(command_prefix=config.PREFIX, intents=intents)
+    activity = nextcord.Activity(Type = nextcord.ActivityType.watching, name = f"{len(client.guilds)} worlds!")
+
+    client = commands.Bot(command_prefix=config.PREFIX, intents=intents, activity=activity, status=nextcord.Status.idle)
+
+    
 
     @client.event
     async def on_ready():
