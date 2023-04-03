@@ -1,5 +1,4 @@
 import os
-import discord
 from nextcord import Activity, Guild
 import nextcord
 from nextcord.ext import commands
