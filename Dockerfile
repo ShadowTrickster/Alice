@@ -1,5 +1,5 @@
-FROM python:3.11.2
+FROM python:3
 WORKDIR /Alice
-COPY . /Alice
-RUN pip install -r requirements.txt
-CMD ["python", "bot.py"]
+COPY . .
+RUN python3 -m pip install -U bot.py python-dotenv
+CMD python -u ./bot.py
