@@ -1,9 +1,11 @@
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 #Bot Basics
 PREFIX = ";"
 BOT_NAME = "Alice"
-BOT_TOKEN = os.getenv("DISCORD_TOKEN", "")
+BOT_TOKEN = str(os.getenv("BOT_TOKEN", ""))
 
 #Guild
 GUILD_ID = int(os.getenv("GUILD_ID", ""))

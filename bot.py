@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from nextcord import Activity, Guild
 import nextcord
 from nextcord.ext import commands
@@ -6,6 +7,8 @@ from nextcord.utils import get
 import config
 import nextcord
 import logging
+
+load_dotenv()
 
 logger = logging.getLogger('nextcord')
 logger.setLevel(logging.DEBUG)
@@ -15,6 +18,7 @@ logger.addHandler(handler)
 
 def main():
     intents = nextcord.Intents.default()
+    intents.message_content = True
     client = commands.Bot(command_prefix=config.PREFIX, 
     intents = intents, 
     activity = nextcord.Activity
